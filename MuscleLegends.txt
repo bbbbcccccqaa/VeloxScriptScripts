@@ -1,0 +1,2975 @@
+--[[
+ .____                  ________ ___.    _____                           __                
+ |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
+ |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
+ |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
+ |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
+         \/          \/         \/    \/                \/     \/     \/                   
+          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
+
+]]--
+
+local v0 = game:GetService("Players");
+local v1 = game:GetService("ReplicatedStorage");
+local v2 = game:GetService("RunService");
+local v3 = v0.LocalPlayer;
+local v4 = getgenv();
+v4.st = v4.st or {};
+local function v6(v106, v107, v108, v109)
+	if v106 then
+		pcall(function()
+			v106:FireServer(v107, v108, v109);
+		end);
+	end
+end
+local function v7(v110, v111, v112, v113)
+	if v110 then
+		pcall(function()
+			v110:InvokeServer(v111, v112, v113);
+		end);
+	end
+end
+local function v8(v114, v115, v116)
+	if (typeof(firetouchinterest) == "function") then
+		pcall(firetouchinterest, v114, v115, v116);
+	end
+end
+local function v9()
+	return v3:FindFirstChild("muscleEvent");
+end
+local function v10(v117)
+	local v118 = 0;
+	local v119;
+	while true do
+		if (v118 == (0 + 0)) then
+			local v289 = 0;
+			while true do
+				if (v289 == 0) then
+					v119 = v1:FindFirstChild("rEvents");
+					return v119 and v119:FindFirstChild(v117);
+				end
+			end
+		end
+	end
+end
+local function v11()
+	return v3.Character;
+end
+local function v12()
+	local v120 = 163 - (92 + 71);
+	local v121;
+	while true do
+		if (v120 == (0 + 0)) then
+			v121 = v11();
+			return v121 and v121:FindFirstChild("HumanoidRootPart");
+		end
+	end
+end
+local function v13(v122)
+	local v123 = 0 - 0;
+	local v124;
+	local v125;
+	local v126;
+	while true do
+		if (v123 == 2) then
+			if (v125 >= 999999986991104) then
+				v126 = string.format("%.2fQa", v125 / (999999986991869 - (574 + 191)));
+			elseif (v125 >= 999999995904) then
+				v126 = string.format("%.2fT", v125 / 999999995904);
+			elseif (v125 >= (824863982 + 175136018)) then
+				v126 = string.format("%.2fB", v125 / (2517226375 - 1517226375));
+			elseif (v125 >= (933736 + 66264)) then
+				v126 = string.format("%.2fM", v125 / (703659 + 296341));
+			elseif (v125 >= (1126 - (55 + 71))) then
+				v126 = string.format("%.2fK", v125 / (1317 - 317));
+			else
+				v126 = string.format("%.0f", v125);
+			end
+			return ((v124 and "-") or "") .. v126;
+		end
+		if (v123 == (1791 - (573 + 1217))) then
+			v125 = math.abs(v122);
+			v126 = nil;
+			v123 = 5 - 3;
+		end
+		if (0 == v123) then
+			v122 = tonumber(v122) or (0 + 0);
+			v124 = v122 < (0 - 0);
+			v123 = 940 - (714 + 225);
+		end
+	end
+end
+local v14 = loadstring(game:HttpGet("https://raw.githubusercontent.com/lkjhg969/ffdsf/refs/heads/main/hgfhj", true))();
+local v15 = v14:AddWindow("VeloxScript | Muscle Legends", {main_color=Color3.fromRGB(233 - 153, 0 - 0, 22 + 178),min_size=Vector2.new(600, 868 - 268),can_resize=false});
+local v16, v17, v18;
+task.spawn(function()
+	local v127 = 0;
+	local v128;
+	while true do
+		if (v127 == (806 - (118 + 688))) then
+			v128 = v3:WaitForChild("leaderstats", 30);
+			if v128 then
+				v16 = v128:WaitForChild("Rebirths", 10);
+				v17 = v128:WaitForChild("Strength", 58 - (25 + 23));
+			end
+			v127 = 1 + 0;
+		end
+		if ((1887 - (927 + 959)) == v127) then
+			v18 = v3:WaitForChild("Durability", 10);
+			break;
+		end
+	end
+end);
+local v19 = v15:AddTab("Fast Rebirth");
+v19:Show();
+local v20 = v19:AddLabel("Timer: 0d 0h 0m 0s - Inactive");
+local v21 = v19:AddLabel("Pace: -");
+local v22 = v19:AddLabel("Average: -");
+local v23 = v19:AddLabel("Rebirths: - | Gained: -");
+v20.TextSize = 17;
+v21.TextSize = 57 - 40;
+v22.TextSize = 749 - (16 + 716);
+v23.TextSize = 17;
+v20.TextColor3 = Color3.fromRGB(255, 96 - 46, 147 - (11 + 86));
+local v29 = false;
+local v30 = 0;
+local v31 = 0 - 0;
+local v32 = 285 - (175 + 110);
+local v33 = 0 - 0;
+local v34 = tick();
+local v35 = 0 - 0;
+local v36, v37, v38 = {}, {}, {};
+task.spawn(function()
+	while true do
+		local v242 = 0;
+		while true do
+			if (v242 == (1796 - (503 + 1293))) then
+				task.wait(0.1 - 0);
+				pcall(function()
+					local v346 = (v29 and ((tick() - v30) + v31)) or v31;
+					local v347 = math.floor(v346 / (62482 + 23918));
+					local v348 = math.floor((v346 % 86400) / (4661 - (810 + 251)));
+					local v349 = math.floor((v346 % (2499 + 1101)) / (19 + 41));
+					local v350 = math.floor(v346 % 60);
+					v20.Text = string.format("%dd %dh %dm %ds - %s", v347, v348, v349, v350, (v29 and "Rebirthing") or "Paused");
+					v20.TextColor3 = (v29 and Color3.fromRGB(50, 230 + 25, 583 - (43 + 490))) or Color3.fromRGB(255, 50, 783 - (711 + 22));
+					if v16 then
+						v23.Text = string.format("Rebirths: %s | Gained: %s", v13(v16.Value), v13(v16.Value - v32));
+					end
+				end);
+				break;
+			end
+		end
+	end
+end);
+local function v39()
+	local v129 = 0 - 0;
+	local v130;
+	local v131;
+	while true do
+		if (v129 == (860 - (240 + 619))) then
+			if (v33 < (1 + 1)) then
+				local v353 = 0 - 0;
+				local v354;
+				while true do
+					if (v353 == (0 + 0)) then
+						v354 = 1744 - (1344 + 400);
+						while true do
+							local v508 = 0;
+							while true do
+								if (0 == v508) then
+									if (v354 == (406 - (255 + 150))) then
+										return;
+									end
+									if (v354 == (0 + 0)) then
+										v34 = tick();
+										v35 = v16.Value;
+										v354 = 1 + 0;
+									end
+									break;
+								end
+							end
+						end
+						break;
+					end
+				end
+			end
+			v130 = tick();
+			v129 = 8 - 6;
+		end
+		if (2 == v129) then
+			v131 = v16.Value - v35;
+			if (v131 > (0 - 0)) then
+				local v355 = 1739 - (404 + 1335);
+				local v356;
+				local v357;
+				local v358;
+				local v359;
+				local v360;
+				while true do
+					if (v355 == 1) then
+						v21.Text = string.format("Pace: %s/h | %s/d | %s/w", v13(v357), v13(v358), v13(v359));
+						table.insert(v36, v357);
+						table.insert(v37, v358);
+						table.insert(v38, v359);
+						v355 = 408 - (183 + 223);
+					end
+					if (v355 == (3 - 0)) then
+						v34 = v130;
+						v35 = v16.Value;
+						break;
+					end
+					if (v355 == (2 + 0)) then
+						if (#v36 > 20) then
+							local v541 = 0 + 0;
+							while true do
+								if (v541 == (337 - (10 + 327))) then
+									table.remove(v36, 1);
+									table.remove(v37, 1 + 0);
+									v541 = 339 - (118 + 220);
+								end
+								if (v541 == 1) then
+									table.remove(v38, 1);
+									break;
+								end
+							end
+						end
+						v360 = nil;
+						function v360(v509)
+							local v510 = 0;
+							local v511;
+							while true do
+								if ((1 + 0) == v510) then
+									return ((#v509 > 0) and (v511 / #v509)) or (449 - (108 + 341));
+								end
+								if (v510 == (0 + 0)) then
+									local v596 = 0 - 0;
+									while true do
+										if (v596 == 0) then
+											v511 = 1493 - (711 + 782);
+											for v646, v647 in ipairs(v509) do
+												v511 = v511 + v647;
+											end
+											v596 = 1;
+										end
+										if (v596 == (1 - 0)) then
+											v510 = 1;
+											break;
+										end
+									end
+								end
+							end
+						end
+						v22.Text = string.format("Avg: %s/h | %s/d | %s/w", v13(v360(v36)), v13(v360(v37)), v13(v360(v38)));
+						v355 = 472 - (270 + 199);
+					end
+					if (v355 == (0 + 0)) then
+						v356 = (v130 - v34) / v131;
+						v357 = (5419 - (580 + 1239)) / v356;
+						v358 = (256848 - 170448) / v356;
+						v359 = (578282 + 26518) / v356;
+						v355 = 1 + 0;
+					end
+				end
+			end
+			break;
+		end
+		if (v129 == (0 + 0)) then
+			if not v16 then
+				return;
+			end
+			v33 = v33 + (2 - 1);
+			v129 = 1 + 0;
+		end
+	end
+end
+task.spawn(function()
+	while true do
+		local v243 = 0;
+		while true do
+			if (v243 == (1167 - (645 + 522))) then
+				task.wait(1790.1 - (1010 + 780));
+				if v29 then
+					pcall(v39);
+				end
+				break;
+			end
+		end
+	end
+end);
+local function v40()
+	local v132 = 0 + 0;
+	local v133;
+	while true do
+		if (v132 == 0) then
+			v133 = 0 - 0;
+			while true do
+				if (v133 == (0 - 0)) then
+					pcall(function()
+						for v482, v483 in pairs(v3.petsFolder:GetChildren()) do
+							if v483:IsA("Folder") then
+								for v570, v571 in pairs(v483:GetChildren()) do
+									v6(v1.rEvents.equipPetEvent, "unequipPet", v571);
+								end
+							end
+						end
+					end);
+					task.wait(1836.1 - (1045 + 791));
+					break;
+				end
+			end
+			break;
+		end
+	end
+end
+local function v41(v134)
+	local v135 = 0;
+	while true do
+		if (v135 == (0 - 0)) then
+			v40();
+			task.wait(0.05 - 0);
+			v135 = 506 - (351 + 154);
+		end
+		if (v135 == (1575 - (1281 + 293))) then
+			pcall(function()
+				for v361, v362 in pairs(v3.petsFolder.Unique:GetChildren()) do
+					if (v362.Name == v134) then
+						v6(v1.rEvents.equipPetEvent, "equipPet", v362);
+					end
+				end
+			end);
+			break;
+		end
+	end
+end
+local function v42()
+	local v136 = 0;
+	local v137;
+	while true do
+		if (v136 == (267 - (28 + 238))) then
+			while v29 and (v17.Value < v137) do
+				local v315 = v9();
+				if v315 then
+					local v383 = 0 - 0;
+					local v384;
+					while true do
+						if (v383 == (1559 - (1381 + 178))) then
+							v384 = ((v3.MembershipType == Enum.MembershipType.Premium) and 8) or 14;
+							for v542 = 1 + 0, v384 do
+								v6(v315, "rep");
+							end
+							break;
+						end
+					end
+				end
+				task.wait(0.02);
+			end
+			if (v29 and (v17.Value >= v137)) then
+				v41("Tribal Overlord");
+				task.wait(0.2 + 0);
+				local v363 = v10("rebirthRemote");
+				if (v363 and v16) then
+					local v428 = 0 + 0;
+					local v429;
+					local v430;
+					while true do
+						if (v428 == (3 - 2)) then
+							repeat
+								local v572 = 0 + 0;
+								while true do
+									if (v572 == 1) then
+										v430 = v430 + 1;
+										break;
+									end
+									if (v572 == (470 - (381 + 89))) then
+										v7(v363, "rebirthRequest");
+										task.wait(0.05 + 0);
+										v572 = 1;
+									end
+								end
+							until (v16.Value > v429) or not v29 or (v430 > 40) 
+							break;
+						end
+						if (v428 == 0) then
+							local v543 = 0 + 0;
+							while true do
+								if ((1 - 0) == v543) then
+									v428 = 1157 - (1074 + 82);
+									break;
+								end
+								if (v543 == (0 - 0)) then
+									v429 = v16.Value;
+									v430 = 1784 - (214 + 1570);
+									v543 = 1456 - (990 + 465);
+								end
+							end
+						end
+					end
+				end
+			end
+			break;
+		end
+		if (v136 == (0 + 0)) then
+			if (not v16 or not v17) then
+				return;
+			end
+			v137 = 2176 + 2824 + (v16.Value * (2480 + 70));
+			v136 = 3 - 2;
+		end
+	end
+end
+local function v43()
+	while v29 do
+		local v244 = 1726 - (1668 + 58);
+		while true do
+			if (v244 == (627 - (512 + 114))) then
+				task.wait(0.3);
+				break;
+			end
+			if ((0 - 0) == v244) then
+				v41("Swift Samurai");
+				v42();
+				v244 = 1 - 0;
+			end
+		end
+	end
+end
+v19:AddLabel("[ Rebirth ]");
+v19:AddSwitch("Fast Rebirth", function(v138)
+	local v139 = 0 - 0;
+	local v140;
+	while true do
+		if (v139 == (0 + 0)) then
+			v140 = 0 + 0;
+			while true do
+				if (v140 == (0 + 0)) then
+					v29 = v138;
+					if v138 then
+						local v484 = 0 - 0;
+						while true do
+							if (v484 == (1995 - (109 + 1885))) then
+								task.spawn(v43);
+								break;
+							end
+							if (v484 == 0) then
+								v32 = (v16 and v16.Value) or (1469 - (1269 + 200));
+								v30 = tick();
+								v484 = 1;
+							end
+						end
+					else
+						v31 = v31 + (tick() - v30);
+					end
+					break;
+				end
+			end
+			break;
+		end
+	end
+end);
+v19:AddSwitch("Set Size 1", function(v141)
+	local v142 = 0;
+	local v143;
+	while true do
+		if (v142 == (0 - 0)) then
+			v143 = 0;
+			while true do
+				if (v143 == 0) then
+					v4.st.RebSz = v141;
+					if v141 then
+						task.spawn(function()
+							while v4.st.RebSz do
+								v7(v10("changeSpeedSizeRemote"), "changeSize", 1);
+								task.wait(0.15);
+							end
+						end);
+					end
+					break;
+				end
+			end
+			break;
+		end
+	end
+end);
+local v44 = false;
+task.spawn(function()
+	while true do
+		if v44 then
+			local v290 = 0;
+			local v291;
+			while true do
+				if (v290 == (815 - (98 + 717))) then
+					v291 = 826 - (802 + 24);
+					while true do
+						if (v291 == (0 - 0)) then
+							pcall(function()
+								local v544 = v9();
+								local v545 = (v11() and v11():FindFirstChild("Tropical Shake")) or v3.Backpack:FindFirstChild("Tropical Shake");
+								if (v544 and v545) then
+									v6(v544, "tropicalShake", v545);
+								end
+							end);
+							task.wait(450);
+							break;
+						end
+					end
+					break;
+				end
+			end
+		else
+			task.wait(1 - 0);
+		end
+	end
+end);
+v19:AddSwitch("Auto Shake", function(v144)
+	v44 = v144;
+	if v144 then
+		pcall(function()
+			local v292 = 0 + 0;
+			local v293;
+			local v294;
+			local v295;
+			while true do
+				if (v292 == (1 + 0)) then
+					v295 = nil;
+					while true do
+						if (0 == v293) then
+							local v512 = 0 + 0;
+							while true do
+								if (v512 == (0 + 0)) then
+									v294 = v9();
+									v295 = (v11() and v11():FindFirstChild("Tropical Shake")) or v3.Backpack:FindFirstChild("Tropical Shake");
+									v512 = 2 - 1;
+								end
+								if (v512 == (3 - 2)) then
+									v293 = 1;
+									break;
+								end
+							end
+						end
+						if ((1 + 0) == v293) then
+							if (v294 and v295) then
+								v6(v294, "tropicalShake", v295);
+							end
+							break;
+						end
+					end
+					break;
+				end
+				if (v292 == (0 + 0)) then
+					v293 = 0 + 0;
+					v294 = nil;
+					v292 = 1 + 0;
+				end
+			end
+		end);
+	end
+end);
+v19:AddSwitch("Spin Fortune Wheel", function(v145)
+	v4.st.RebFW = v145;
+	if v145 then
+		task.spawn(function()
+			while v4.st.RebFW do
+				local v316 = 0;
+				while true do
+					if (v316 == (0 + 0)) then
+						pcall(function()
+							local v485 = v10("openFortuneWheelRemote");
+							local v486 = v1:FindFirstChild("fortuneWheelChances");
+							local v487 = v486 and v486:FindFirstChild("Fortune Wheel");
+							if (v485 and v487) then
+								v7(v485, "openFortuneWheel", v487);
+							end
+						end);
+						task.wait(1433.5 - (797 + 636));
+						break;
+					end
+				end
+			end
+		end);
+	end
+end);
+v19:AddLabel("[ Misc ]");
+local v45 = false;
+v19:AddSwitch("Lock Position", function(v147)
+	v45 = v147;
+	if v147 then
+		task.spawn(function()
+			pcall(function()
+				local v317 = 0 - 0;
+				local v318;
+				local v319;
+				local v320;
+				while true do
+					if (v317 == (1619 - (1427 + 192))) then
+						v318 = 0 + 0;
+						v319 = nil;
+						v317 = 1;
+					end
+					if (v317 == (2 - 1)) then
+						v320 = nil;
+						while true do
+							if (0 == v318) then
+								v319 = v12();
+								if not v319 then
+									return;
+								end
+								v318 = 1;
+							end
+							if (v318 == (1 + 0)) then
+								v320 = v319.CFrame;
+								while v45 do
+									local v573 = 0 + 0;
+									while true do
+										if (v573 == (326 - (192 + 134))) then
+											pcall(function()
+												local v641 = v12();
+												if v641 then
+													local v657 = 1276 - (316 + 960);
+													while true do
+														if ((1 + 0) == v657) then
+															v641.CFrame = v320;
+															break;
+														end
+														if (v657 == 0) then
+															v641.Velocity = Vector3.new(0 + 0, 0, 0 + 0);
+															v641.RotVelocity = Vector3.new(0 - 0, 551 - (83 + 468), 1806 - (1202 + 604));
+															v657 = 4 - 3;
+														end
+													end
+												end
+											end);
+											task.wait(0.05 - 0);
+											break;
+										end
+									end
+								end
+								break;
+							end
+						end
+						break;
+					end
+				end
+			end);
+		end);
+	end
+end);
+local function v46()
+	local v148 = 0 - 0;
+	local v149;
+	while true do
+		if (v148 == (326 - (45 + 280))) then
+			pcall(function()
+				local v321 = 0 + 0;
+				local v322;
+				local v323;
+				while true do
+					if (v321 == 4) then
+						v149.ClockTime = 0 + 0;
+						v149.OutdoorAmbient = Color3.new(0, 0 + 0, 0);
+						v149.Ambient = Color3.new(0, 0 + 0, 0 + 0);
+						v321 = 9 - 4;
+					end
+					if (v321 == 2) then
+						v322.SkyboxFt = v323;
+						v322.SkyboxLf = v323;
+						v322.SkyboxRt = v323;
+						v321 = 3;
+					end
+					if (v321 == 0) then
+						for v488, v489 in pairs(v149:GetChildren()) do
+							if v489:IsA("Sky") then
+								v489:Destroy();
+							end
+						end
+						v322 = Instance.new("Sky");
+						v322.Name = "VSky";
+						v321 = 1;
+					end
+					if (v321 == (1914 - (340 + 1571))) then
+						v322.SkyboxUp = v323;
+						v322.Parent = v149;
+						v149.Brightness = 0;
+						v321 = 2 + 2;
+					end
+					if (v321 == (1773 - (1733 + 39))) then
+						v323 = "rbxassetid://0";
+						v322.SkyboxBk = v323;
+						v322.SkyboxDn = v323;
+						v321 = 5 - 3;
+					end
+					if ((1039 - (125 + 909)) == v321) then
+						v149.FogColor = Color3.new(1948 - (1096 + 852), 0 + 0, 0);
+						v149.FogEnd = 142 - 42;
+						break;
+					end
+				end
+			end);
+			pcall(function()
+				for v364, v365 in pairs(workspace:GetDescendants()) do
+					if (v365:IsA("ParticleEmitter") or v365:IsA("PointLight") or v365:IsA("SpotLight") or v365:IsA("SurfaceLight")) then
+						pcall(function()
+							v365:Destroy();
+						end);
+					end
+				end
+			end);
+			break;
+		end
+		if (v148 == 0) then
+			v149 = game:GetService("Lighting");
+			pcall(function()
+				local v324 = v3:FindFirstChild("PlayerGui");
+				if v324 then
+					for v445, v446 in pairs(v324:GetChildren()) do
+						pcall(function()
+							if v446:IsA("ScreenGui") then
+								v446:Destroy();
+							end
+						end);
+					end
+				end
+			end);
+			v148 = 1 + 0;
+		end
+	end
+end
+v19:AddButton("Anti Lag (Max)", v46);
+v19:AddButton("Jungle Lift", function()
+	pcall(function()
+		local v245 = 0;
+		local v246;
+		while true do
+			if (v245 == (512 - (409 + 103))) then
+				v246 = v12();
+				if v246 then
+					v246.CFrame = CFrame.new(-8642.396, 6.798, 2086.103);
+				end
+				break;
+			end
+		end
+	end);
+end);
+local v47 = v15:AddTab("Fast Farm");
+local v48 = v47:AddLabel("Timer: 0d 0h 0m 0s - Inactive");
+local v49 = v47:AddLabel("Str Pace: -");
+local v50 = v47:AddLabel("Dur Pace: -");
+local v51 = v47:AddLabel("Avg Str: -");
+local v52 = v47:AddLabel("Avg Dur: -");
+v48.TextSize = 17;
+v48.TextColor3 = Color3.fromRGB(491 - (46 + 190), 145 - (51 + 44), 15 + 35);
+v49.TextSize = 1334 - (1114 + 203);
+v50.TextSize = 743 - (228 + 498);
+v51.TextSize = 4 + 13;
+v52.TextSize = 17;
+v47:AddLabel("");
+local v59 = v47:AddLabel("[ Stats ]");
+v59.TextSize = 12 + 8;
+local v61 = v47:AddLabel("Strength: - | Gained: -");
+v61.TextSize = 680 - (174 + 489);
+local v63 = v47:AddLabel("Durability: - | Gained: -");
+v63.TextSize = 44 - 27;
+local v65 = false;
+local v66 = false;
+local v67 = 1905 - (830 + 1075);
+local v68 = 0;
+local v69 = 524 - (303 + 221);
+local v70 = 0;
+local v71 = {};
+local v72 = {};
+local v73 = 1279 - (231 + 1038);
+local v74 = 1 + 0;
+local function v75()
+	local v150 = 0;
+	local v151;
+	local v152;
+	while true do
+		if (v150 == 0) then
+			v151, v152 = pcall(function()
+				return game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue();
+			end);
+			return (v151 and v152) or 0;
+		end
+	end
+end
+task.spawn(function()
+	local v153 = tick();
+	while true do
+		task.wait(0.05);
+		pcall(function()
+			local v271 = tick();
+			local v272 = (v17 and v17.Value) or (1162 - (171 + 991));
+			local v273 = (v18 and v18.Value) or (0 - 0);
+			v61.Text = string.format("Strength: %s | Gained: %s", v13(v272), v13(v272 - v69));
+			v63.Text = string.format("Durability: %s | Gained: %s", v13(v273), v13(v273 - v70));
+			if v65 then
+				local v325 = 0 - 0;
+				local v326;
+				local v327;
+				local v328;
+				local v329;
+				local v330;
+				while true do
+					if (v325 == (2 - 1)) then
+						v329 = math.floor((v326 % 3600) / 60);
+						v330 = math.floor(v326 % (49 + 11));
+						v48.Text = string.format("%dd %dh %dm %ds - Running", v327, v328, v329, v330);
+						v48.TextColor3 = Color3.fromRGB(175 - 125, 735 - 480, 80 - 30);
+						v325 = 6 - 4;
+					end
+					if (v325 == 3) then
+						if ((v271 - v153) >= v73) then
+							local v513 = 0;
+							local v514;
+							while true do
+								if (v513 == (1248 - (111 + 1137))) then
+									v153 = v271;
+									if (#v71 >= (160 - (91 + 67))) then
+										local v624 = 0 - 0;
+										local v625;
+										while true do
+											if (v624 == (0 + 0)) then
+												v625 = (v71[#v71].v - v71[524 - (423 + 100)].v) / v73;
+												v49.Text = string.format("Str: %s/h | %s/d | %s/w", v13(v625 * (26 + 3574)), v13(v625 * 86400), v13(v625 * 604800));
+												break;
+											end
+										end
+									end
+									v513 = 2 - 1;
+								end
+								if (v513 == 1) then
+									if (#v72 >= 2) then
+										local v626 = 0 + 0;
+										local v627;
+										while true do
+											if (v626 == (771 - (326 + 445))) then
+												v627 = (v72[#v72].v - v72[1].v) / v73;
+												v50.Text = string.format("Dur: %s/h | %s/d | %s/w", v13(v627 * (15710 - 12110)), v13(v627 * 86400), v13(v627 * (1347386 - 742586)));
+												break;
+											end
+										end
+									end
+									v514 = v68 + (v271 - v67);
+									v513 = 4 - 2;
+								end
+								if (v513 == (713 - (530 + 181))) then
+									if (v514 > (881 - (614 + 267))) then
+										local v628 = 32 - (19 + 13);
+										local v629;
+										local v630;
+										local v631;
+										while true do
+											if ((1 - 0) == v628) then
+												v631 = nil;
+												while true do
+													if (v629 == (2 - 1)) then
+														v51.Text = string.format("Avg Str: %s/h | %s/d", v13(v630 * (10283 - 6683)), v13(v630 * (22439 + 63961)));
+														v52.Text = string.format("Avg Dur: %s/h | %s/d", v13(v631 * (6331 - 2731)), v13(v631 * 86400));
+														break;
+													end
+													if ((0 - 0) == v629) then
+														local v680 = 1812 - (1293 + 519);
+														while true do
+															if (v680 == (1 - 0)) then
+																v629 = 2 - 1;
+																break;
+															end
+															if (v680 == (0 - 0)) then
+																v630 = (v272 - v69) / v514;
+																v631 = (v273 - v70) / v514;
+																v680 = 4 - 3;
+															end
+														end
+													end
+												end
+												break;
+											end
+											if (v628 == 0) then
+												v629 = 0;
+												v630 = nil;
+												v628 = 2 - 1;
+											end
+										end
+									end
+									break;
+								end
+							end
+						end
+						break;
+					end
+					if (v325 == (0 + 0)) then
+						if not v66 then
+							local v515 = 0 + 0;
+							local v516;
+							while true do
+								if (v515 == (0 - 0)) then
+									v516 = 0 + 0;
+									while true do
+										if (v516 == (0 + 0)) then
+											v66 = true;
+											v67 = v271;
+											v516 = 1 + 0;
+										end
+										if (v516 == 2) then
+											v71 = {};
+											v72 = {};
+											break;
+										end
+										if (v516 == (1097 - (709 + 387))) then
+											v69 = v272;
+											v70 = v273;
+											v516 = 1860 - (673 + 1185);
+										end
+									end
+									break;
+								end
+							end
+						end
+						v326 = v68 + (v271 - v67);
+						v327 = math.floor(v326 / (250572 - 164172));
+						v328 = math.floor((v326 % (277447 - 191047)) / (5923 - 2323));
+						v325 = 1 + 0;
+					end
+					if (v325 == 2) then
+						table.insert(v71, {t=v271,v=v272});
+						table.insert(v72, {t=v271,v=v273});
+						while (#v71 > (0 + 0)) and ((v271 - v71[1 - 0].t) > v73) do
+							table.remove(v71, 1 + 0);
+						end
+						while (#v72 > (0 - 0)) and ((v271 - v72[1 - 0].t) > v73) do
+							table.remove(v72, 1881 - (446 + 1434));
+						end
+						v325 = 3;
+					end
+				end
+			elseif v66 then
+				local v387 = 0;
+				local v388;
+				local v389;
+				local v390;
+				local v391;
+				local v392;
+				while true do
+					if (v387 == 3) then
+						v49.Text = "Str Pace: -";
+						v50.Text = "Dur Pace: -";
+						v51.Text = "Avg Str: -";
+						v387 = 1287 - (1040 + 243);
+					end
+					if (v387 == 0) then
+						v66 = false;
+						v68 = v68 + (v271 - v67);
+						v388 = v68;
+						v387 = 2 - 1;
+					end
+					if (v387 == (1851 - (559 + 1288))) then
+						v52.Text = "Avg Dur: -";
+						v71 = {};
+						v72 = {};
+						break;
+					end
+					if (v387 == (1932 - (609 + 1322))) then
+						v389 = math.floor(v388 / 86400);
+						v390 = math.floor((v388 % 86400) / 3600);
+						v391 = math.floor((v388 % 3600) / 60);
+						v387 = 2;
+					end
+					if (v387 == (456 - (13 + 441))) then
+						local v521 = 0 - 0;
+						while true do
+							if (v521 == (2 - 1)) then
+								v48.TextColor3 = Color3.fromRGB(255, 821 - 656, 0 + 0);
+								v387 = 3;
+								break;
+							end
+							if (v521 == (0 - 0)) then
+								v392 = math.floor(v388 % (22 + 38));
+								v48.Text = string.format("%dd %dh %dm %ds - Stopped", v389, v390, v391, v392);
+								v521 = 1;
+							end
+						end
+					end
+				end
+			end
+		end);
+	end
+end);
+local function v76()
+	while v65 do
+		local v247 = tick();
+		while ((tick() - v247) < 0.75) and v65 do
+			local v276 = 0 + 0;
+			local v277;
+			while true do
+				if (v276 == 1) then
+					task.wait(0.02 - 0);
+					break;
+				end
+				if (v276 == (0 + 0)) then
+					v277 = v9();
+					if v277 then
+						for v490 = 1, v74 do
+							v6(v277, "rep");
+						end
+					end
+					v276 = 1 - 0;
+				end
+			end
+		end
+		while v65 and (v75() >= 350) do
+			task.wait(1 + 0);
+		end
+	end
+end
+v47:AddLabel("");
+v47:AddLabel("[ Fast Farm ] (Speed 20 recommended)");
+v47:AddTextBox("Rep Speed", function(v154)
+	local v155 = 0;
+	local v156;
+	while true do
+		if (v155 == 0) then
+			v156 = tonumber(v154);
+			if (v156 and (v156 > (0 + 0))) then
+				v74 = math.floor(v156);
+			end
+			break;
+		end
+	end
+end);
+v47:AddSwitch("Fast Rep", function(v157)
+	if (v157 and not v65) then
+		local v278 = 0 + 0;
+		while true do
+			if (v278 == (0 + 0)) then
+				v65 = true;
+				task.spawn(v76);
+				break;
+			end
+		end
+	elseif not v157 then
+		v65 = false;
+	end
+end);
+v47:AddLabel("[ Misc ]");
+local v77 = false;
+task.spawn(function()
+	while true do
+		if v77 then
+			local v296 = 0 + 0;
+			local v297;
+			while true do
+				if (v296 == (433 - (153 + 280))) then
+					v297 = 0;
+					while true do
+						if (v297 == 0) then
+							pcall(function()
+								local v547 = 0 - 0;
+								local v548;
+								local v549;
+								while true do
+									if (v547 == (0 + 0)) then
+										local v614 = 0 + 0;
+										while true do
+											if (v614 == (1 + 0)) then
+												v547 = 1 + 0;
+												break;
+											end
+											if (0 == v614) then
+												v548 = v9();
+												v549 = (v11() and v11():FindFirstChild("Protein Egg")) or v3.Backpack:FindFirstChild("Protein Egg");
+												v614 = 1;
+											end
+										end
+									end
+									if ((1 + 0) == v547) then
+										if (v548 and v549) then
+											v6(v548, "proteinEgg", v549);
+										end
+										break;
+									end
+								end
+							end);
+							task.wait(2740 - 940);
+							break;
+						end
+					end
+					break;
+				end
+			end
+		else
+			task.wait(1);
+		end
+	end
+end);
+v47:AddSwitch("Auto Egg (30 min)", function(v158)
+	local v159 = 0 + 0;
+	while true do
+		if ((667 - (89 + 578)) == v159) then
+			v77 = v158;
+			if v158 then
+				pcall(function()
+					local v393 = v9();
+					local v394 = (v11() and v11():FindFirstChild("Protein Egg")) or v3.Backpack:FindFirstChild("Protein Egg");
+					if (v393 and v394) then
+						v6(v393, "proteinEgg", v394);
+					end
+				end);
+			end
+			break;
+		end
+	end
+end);
+local v78 = false;
+task.spawn(function()
+	while true do
+		if v78 then
+			local v298 = 0 + 0;
+			while true do
+				if ((0 - 0) == v298) then
+					pcall(function()
+						local v449 = v9();
+						local v450 = (v11() and v11():FindFirstChild("Tropical Shake")) or v3.Backpack:FindFirstChild("Tropical Shake");
+						if (v449 and v450) then
+							v6(v449, "tropicalShake", v450);
+						end
+					end);
+					task.wait(1949 - (572 + 477));
+					break;
+				end
+			end
+		else
+			task.wait(1 + 0);
+		end
+	end
+end);
+v47:AddSwitch("Auto Shake (15 min)", function(v160)
+	local v161 = 0;
+	while true do
+		if (v161 == (0 + 0)) then
+			v78 = v160;
+			if v160 then
+				pcall(function()
+					local v395 = v9();
+					local v396 = (v11() and v11():FindFirstChild("Tropical Shake")) or v3.Backpack:FindFirstChild("Tropical Shake");
+					if (v395 and v396) then
+						v6(v395, "tropicalShake", v396);
+					end
+				end);
+			end
+			break;
+		end
+	end
+end);
+v47:AddSwitch("Spin Fortune Wheel", function(v162)
+	local v163 = 0;
+	while true do
+		if (v163 == (0 + 0)) then
+			v4.st.FFFW = v162;
+			if v162 then
+				task.spawn(function()
+					while v4.st.FFFW do
+						local v451 = 86 - (84 + 2);
+						while true do
+							if (v451 == (0 - 0)) then
+								pcall(function()
+									local v574 = v10("openFortuneWheelRemote");
+									local v575 = v1:FindFirstChild("fortuneWheelChances");
+									local v576 = v575 and v575:FindFirstChild("Fortune Wheel");
+									if (v574 and v576) then
+										v7(v574, "openFortuneWheel", v576);
+									end
+								end);
+								task.wait(0.5 + 0);
+								break;
+							end
+						end
+					end
+				end);
+			end
+			break;
+		end
+	end
+end);
+v47:AddButton("Equip Swift Samurai", function()
+	v41("Swift Samurai");
+end);
+v47:AddButton("Jungle Squat", function()
+	pcall(function()
+		local v248 = 842 - (497 + 345);
+		local v249;
+		while true do
+			if ((0 + 0) == v248) then
+				v249 = v12();
+				if v249 then
+					v249.CFrame = CFrame.new(-(1416.4339999999993 + 6955), 1339.798 - (605 + 728), 2040.8850000000002 + 818);
+				end
+				break;
+			end
+		end
+	end);
+end);
+v47:AddButton("Anti Lag (Max)", v46);
+local v79 = v15:AddTab("Farm");
+v79:AddLabel("[ Auto Farm ]");
+v79:AddSwitch("Auto Farm Strength", function(v164)
+	local v165 = 0 - 0;
+	while true do
+		if (v165 == (0 + 0)) then
+			v4.st.Farm = v164;
+			task.spawn(function()
+				while v4.st.Farm do
+					local v366 = 0 - 0;
+					local v367;
+					while true do
+						if (v366 == 0) then
+							v367 = v9();
+							if v367 then
+								v6(v367, "rep");
+							end
+							v366 = 1 + 0;
+						end
+						if (v366 == 1) then
+							task.wait(0.1 - 0);
+							break;
+						end
+					end
+				end
+			end);
+			break;
+		end
+	end
+end);
+v79:AddSwitch("Fast Tools", function(v166)
+	local v167 = {{"Punch","attackTime",((v166 and (1402 - (832 + 570))) or 0.35)},{"Ground Slam","attackTime",((v166 and 0) or 6)},{"Stomp","attackTime",((v166 and 0) or (1807 - (884 + 916)))},{"Handstands","repTime",((v166 and (1889 - (1569 + 320))) or 1)},{"Pushups","repTime",((v166 and (605 - (316 + 289))) or (2 - 1))},{"Weight","repTime",((v166 and (0 + 0)) or 1)},{"Situps","repTime",((v166 and (0 + 0)) or (2 - 1))}};
+	local v168 = v3:FindFirstChild("Backpack");
+	if not v168 then
+		return;
+	end
+	for v250, v251 in ipairs(v167) do
+		pcall(function()
+			local v279 = 0 - 0;
+			local v280;
+			local v281;
+			while true do
+				if (v279 == (900 - (503 + 396))) then
+					v281 = v11() and v11():FindFirstChild(v251[182 - (92 + 89)]);
+					if (v281 and v281:FindFirstChild(v251[2])) then
+						v281[v251[3 - 1]].Value = v251[2 + 1];
+					end
+					break;
+				end
+				if (v279 == (0 + 0)) then
+					local v368 = 0 - 0;
+					while true do
+						if (v368 == (0 + 0)) then
+							v280 = v168:FindFirstChild(v251[2 - 1]);
+							if (v280 and v280:FindFirstChild(v251[2 + 0])) then
+								v280[v251[2]].Value = v251[2 + 1];
+							end
+							v368 = 2 - 1;
+						end
+						if (v368 == (1 + 0)) then
+							v279 = 1;
+							break;
+						end
+					end
+				end
+			end
+		end);
+	end
+end);
+local v80 = false;
+local v81 = {"ULTRA Shake","TOUGH Bar","Protein Shake","Energy Shake","Protein Bar","Energy Bar","Tropical Shake"};
+task.spawn(function()
+	while true do
+		if v80 then
+			local v301 = 946 - (88 + 858);
+			while true do
+				if (v301 == 0) then
+					pcall(function()
+						local v454 = 0 + 0;
+						local v455;
+						local v456;
+						while true do
+							if ((0 + 0) == v454) then
+								local v552 = 0;
+								while true do
+									if (v552 == 1) then
+										v454 = 1 + 0;
+										break;
+									end
+									if (v552 == (789 - (766 + 23))) then
+										v455 = v3:FindFirstChild("Backpack");
+										v456 = v11();
+										v552 = 1;
+									end
+								end
+							end
+							if (1 == v454) then
+								if (not v455 or not v456) then
+									return;
+								end
+								for v577, v578 in ipairs(v81) do
+									local v579 = v455:FindFirstChild(v578);
+									while v579 do
+										local v599 = 0;
+										while true do
+											if (v599 == 0) then
+												v579.Parent = v456;
+												task.wait(0.05);
+												v599 = 1;
+											end
+											if (v599 == (9 - 7)) then
+												v579 = v455:FindFirstChild(v578);
+												break;
+											end
+											if (v599 == 1) then
+												pcall(function()
+													v579:Activate();
+												end);
+												task.wait(0.05 - 0);
+												v599 = 4 - 2;
+											end
+										end
+									end
+								end
+								break;
+							end
+						end
+					end);
+					task.wait(6 - 4);
+					break;
+				end
+			end
+		else
+			task.wait(1);
+		end
+	end
+end);
+v79:AddSwitch("Auto Eat Boosts", function(v169)
+	v80 = v169;
+end);
+v79:AddSwitch("Anti Lag (Particles)", function(v170)
+	for v252, v253 in pairs(game:GetDescendants()) do
+		pcall(function()
+			if (v253:IsA("ParticleEmitter") or v253:IsA("Smoke") or v253:IsA("Fire") or v253:IsA("Sparkles")) then
+				v253.Enabled = not v170;
+			end
+		end);
+	end
+end);
+v79:AddLabel("[ Auto Tools ]");
+local function v82(v171, v172)
+	v79:AddSwitch("Auto " .. v171, function(v254)
+		local v255 = 1073 - (1036 + 37);
+		while true do
+			if (0 == v255) then
+				v4.st[v172] = v254;
+				if v254 then
+					pcall(function()
+						local v457 = 0;
+						local v458;
+						local v459;
+						while true do
+							if (v457 == (0 + 0)) then
+								v458 = v3.Backpack:FindFirstChild(v171);
+								v459 = v11() and v11():FindFirstChild("Humanoid");
+								v457 = 1 - 0;
+							end
+							if (v457 == (1 + 0)) then
+								if (v458 and v459) then
+									v459:EquipTool(v458);
+								end
+								break;
+							end
+						end
+					end);
+				else
+					pcall(function()
+						local v460 = v11() and v11():FindFirstChild(v171);
+						if v460 then
+							v460.Parent = v3.Backpack;
+						end
+					end);
+				end
+				v255 = 1481 - (641 + 839);
+			end
+			if (v255 == (914 - (910 + 3))) then
+				task.spawn(function()
+					while v4.st[v172] do
+						local v398 = 0 - 0;
+						local v399;
+						while true do
+							if (v398 == 1) then
+								task.wait(1684.1 - (1466 + 218));
+								break;
+							end
+							if ((0 + 0) == v398) then
+								v399 = v9();
+								if v399 then
+									v6(v399, "rep");
+								end
+								v398 = 1149 - (556 + 592);
+							end
+						end
+					end
+				end);
+				break;
+			end
+		end
+	end);
+end
+v82("Weight", "TW");
+v82("Pushups", "TPU");
+v82("Handstands", "TH");
+v82("Situps", "TS");
+v79:AddSwitch("Auto Punch (No Anim)", function(v173)
+	local v174 = 0 + 0;
+	local v175;
+	while true do
+		if (v174 == (808 - (329 + 479))) then
+			v175 = 854 - (174 + 680);
+			while true do
+				if (v175 == 0) then
+					v4.st.PNA = v173;
+					task.spawn(function()
+						while v4.st.PNA do
+							local v491 = 0 - 0;
+							while true do
+								if (v491 == (0 - 0)) then
+									pcall(function()
+										local v600 = 0;
+										local v601;
+										local v602;
+										while true do
+											if (v600 == (1 + 0)) then
+												v602 = v3.Backpack:FindFirstChild("Punch") or v601:FindFirstChild("Punch");
+												if v602 then
+													local v660 = 739 - (396 + 343);
+													local v661;
+													while true do
+														if (v660 == (0 + 0)) then
+															if (v602.Parent ~= v601) then
+																v602.Parent = v601;
+															end
+															v661 = v9();
+															v660 = 1478 - (29 + 1448);
+														end
+														if (v660 == 1) then
+															if v661 then
+																local v685 = 0;
+																while true do
+																	if (0 == v685) then
+																		v6(v661, "punch", "rightHand");
+																		v6(v661, "punch", "leftHand");
+																		break;
+																	end
+																end
+															end
+															break;
+														end
+													end
+												end
+												break;
+											end
+											if (v600 == 0) then
+												v601 = v11();
+												if not v601 then
+													return;
+												end
+												v600 = 1390 - (135 + 1254);
+											end
+										end
+									end);
+									task.wait(0.05 - 0);
+									break;
+								end
+							end
+						end
+					end);
+					break;
+				end
+			end
+			break;
+		end
+	end
+end);
+v79:AddSwitch("Fast Punch", function(v176)
+	v4.st.FP = v176;
+	if v176 then
+		local v282 = 0 - 0;
+		local v283;
+		while true do
+			if (v282 == 0) then
+				v283 = 0;
+				while true do
+					if (v283 == (0 + 0)) then
+						task.spawn(function()
+							while v4.st.FP do
+								local v553 = 1527 - (389 + 1138);
+								while true do
+									if (v553 == (574 - (102 + 472))) then
+										pcall(function()
+											local v632 = 0 + 0;
+											local v633;
+											local v634;
+											local v635;
+											while true do
+												if (v632 == 2) then
+													if v635 then
+														local v670 = 0 + 0;
+														local v671;
+														while true do
+															if (v670 == (0 + 0)) then
+																v635.Parent = v633;
+																v671 = v635:FindFirstChild("attackTime");
+																v670 = 1546 - (320 + 1225);
+															end
+															if (v670 == (1 - 0)) then
+																if v671 then
+																	v671.Value = 0 + 0;
+																end
+																break;
+															end
+														end
+													end
+													break;
+												end
+												if (v632 == (1464 - (157 + 1307))) then
+													v633 = v11();
+													if not v633 then
+														return;
+													end
+													v632 = 1860 - (821 + 1038);
+												end
+												if (v632 == (2 - 1)) then
+													v634 = v3:FindFirstChild("Backpack");
+													v635 = v634 and v634:FindFirstChild("Punch");
+													v632 = 1 + 1;
+												end
+											end
+										end);
+										task.wait(0.1 - 0);
+										break;
+									end
+								end
+							end
+						end);
+						task.spawn(function()
+							while v4.st.FP do
+								local v554 = 0 + 0;
+								local v555;
+								while true do
+									if (v554 == (0 - 0)) then
+										v555 = 1026 - (834 + 192);
+										while true do
+											if (v555 == (0 + 0)) then
+												pcall(function()
+													local v662 = 0 + 0;
+													local v663;
+													local v664;
+													while true do
+														if (v662 == 0) then
+															v663 = v11();
+															if not v663 then
+																return;
+															end
+															v662 = 1 + 0;
+														end
+														if (v662 == (1 - 0)) then
+															v664 = v663:FindFirstChild("Punch");
+															if v664 then
+																v664:Activate();
+															end
+															break;
+														end
+													end
+												end);
+												task.wait(0.05);
+												break;
+											end
+										end
+										break;
+									end
+								end
+							end
+						end);
+						break;
+					end
+				end
+				break;
+			end
+		end
+	else
+		pcall(function()
+			local v302 = 304 - (300 + 4);
+			local v303;
+			while true do
+				if ((0 + 0) == v302) then
+					v303 = v11();
+					if v303 then
+						local v492 = v303:FindFirstChild("Punch");
+						if v492 then
+							v492.Parent = v3.Backpack;
+						end
+					end
+					break;
+				end
+			end
+		end);
+	end
+end);
+v79:AddButton("Gamepass AutoLift", function()
+	pcall(function()
+		local v256 = 0 - 0;
+		local v257;
+		while true do
+			if (v256 == 0) then
+				v257 = v1:FindFirstChild("gamepassIds");
+				if not v257 then
+					return;
+				end
+				v256 = 363 - (112 + 250);
+			end
+			if (v256 == (1 + 0)) then
+				for v369, v370 in pairs(v257:GetChildren()) do
+					if not v3.ownedGamepasses:FindFirstChild(v370.Name) then
+						local v461 = 0 - 0;
+						local v462;
+						while true do
+							if (v461 == (0 + 0)) then
+								v462 = Instance.new("IntValue");
+								v462.Name = v370.Name;
+								v461 = 1;
+							end
+							if (v461 == (1 + 0)) then
+								v462.Value = v370.Value;
+								v462.Parent = v3.ownedGamepasses;
+								break;
+							end
+						end
+					end
+				end
+				break;
+			end
+		end
+	end);
+end);
+local v83 = v15:AddTab("Rocks");
+local function v84()
+	pcall(function()
+		local v258 = 0 + 0;
+		local v259;
+		local v260;
+		local v261;
+		while true do
+			if (v258 == (1 + 0)) then
+				if (not v259 or not v260) then
+					return;
+				end
+				for v371, v372 in pairs(v259:GetChildren()) do
+					if (v372.Name == "Punch") then
+						local v463 = 0;
+						local v464;
+						while true do
+							if (v463 == (0 + 0)) then
+								v464 = v260:FindFirstChild("Humanoid");
+								if v464 then
+									v464:EquipTool(v372);
+								end
+								break;
+							end
+						end
+					end
+				end
+				v258 = 1416 - (1001 + 413);
+			end
+			if (v258 == (0 - 0)) then
+				v259 = v3:FindFirstChild("Backpack");
+				v260 = v11();
+				v258 = 883 - (244 + 638);
+			end
+			if ((695 - (627 + 66)) == v258) then
+				v261 = v9();
+				if v261 then
+					v6(v261, "punch", "leftHand");
+					v6(v261, "punch", "rightHand");
+				end
+				break;
+			end
+		end
+	end);
+end
+local function v85(v178, v179, v180)
+	v83:AddSwitch(v178, function(v262)
+		v4.st[v180] = v262;
+		task.spawn(function()
+			while v4.st[v180] do
+				local v304 = 0 - 0;
+				while true do
+					if (0 == v304) then
+						task.wait(602.05 - (512 + 90));
+						pcall(function()
+							local v465 = 1906 - (1665 + 241);
+							local v466;
+							local v467;
+							local v468;
+							local v469;
+							local v470;
+							while true do
+								if ((718 - (373 + 344)) == v465) then
+									v467 = workspace:FindFirstChild("machinesFolder");
+									v468 = v11();
+									v465 = 1 + 1;
+								end
+								if (v465 == (2 + 2)) then
+									for v580, v581 in pairs(v467:GetDescendants()) do
+										if ((v581.Name == "neededDurability") and (v581.Value == v179)) then
+											local v615 = 0;
+											local v616;
+											while true do
+												if (v615 == (0 - 0)) then
+													v616 = v581.Parent and v581.Parent:FindFirstChild("Rock");
+													if v616 then
+														v8(v616, v470, 0 - 0);
+														v8(v616, v470, 1100 - (35 + 1064));
+														v8(v616, v469, 0);
+														v8(v616, v469, 1);
+														v84();
+													end
+													break;
+												end
+											end
+										end
+									end
+									break;
+								end
+								if (0 == v465) then
+									v466 = v3:FindFirstChild("Durability");
+									if (not v466 or (v466.Value < v179)) then
+										return;
+									end
+									v465 = 1 + 0;
+								end
+								if (v465 == 2) then
+									if (not v467 or not v468) then
+										return;
+									end
+									v469 = v468:FindFirstChild("LeftHand");
+									v465 = 6 - 3;
+								end
+								if (v465 == (1 + 2)) then
+									local v564 = 1236 - (298 + 938);
+									while true do
+										if (v564 == (1259 - (233 + 1026))) then
+											v470 = v468:FindFirstChild("RightHand");
+											if (not v469 or not v470) then
+												return;
+											end
+											v564 = 1667 - (636 + 1030);
+										end
+										if (v564 == 1) then
+											v465 = 3 + 1;
+											break;
+										end
+									end
+								end
+							end
+						end);
+						break;
+					end
+				end
+			end
+		end);
+	end);
+end
+v85("Tiny Island (0 Dur)", 0 + 0, "Rc0");
+v85("Starter Island (100 Dur)", 100, "Rc1");
+v85("Legend Beach (5K Dur)", 5000, "Rc2");
+v85("Frost Gym (150K Dur)", 44560 + 105440, "Rc3");
+v85("Mythical Gym (400K Dur)", 27026 + 372974, "Rc4");
+v85("Eternal Gym (750K Dur)", 750000, "Rc5");
+v85("Legend Gym (1M Dur)", 1000221 - (55 + 166), "Rc6");
+v85("Muscle King Gym (5M Dur)", 5000000, "Rc7");
+v85("Ancient Jungle (10M Dur)", 1937935 + 8062065, "Rc8");
+local v86 = v15:AddTab("Rebirths");
+local v87 = 1 + 0;
+local v88, v89;
+v86:AddTextBox("Rebirth Target", function(v181)
+	local v182 = tonumber(v181);
+	if (v182 and (v182 > (0 - 0))) then
+		v87 = v182;
+	end
+end);
+v88 = v86:AddSwitch("Auto Rebirth (Target)", function(v183)
+	local v184 = 297 - (36 + 261);
+	local v185;
+	while true do
+		if (0 == v184) then
+			v185 = 0 - 0;
+			while true do
+				if (v185 == (1368 - (34 + 1334))) then
+					v4.st.RebT = v183;
+					if v183 then
+						local v493 = 0 + 0;
+						while true do
+							if ((1 + 0) == v493) then
+								task.spawn(function()
+									while v4.st.RebT do
+										pcall(function()
+											local v636 = v3:FindFirstChild("leaderstats");
+											if v636 then
+												local v648 = 1283 - (1035 + 248);
+												local v649;
+												while true do
+													if (v648 == 0) then
+														v649 = v636:FindFirstChild("Rebirths");
+														if (v649 and (v649.Value >= v87)) then
+															v4.st.RebT = false;
+															pcall(function()
+																v88:Set(false);
+															end);
+															return;
+														end
+														break;
+													end
+												end
+											end
+											v7(v10("rebirthRemote"), "rebirthRequest");
+										end);
+										task.wait(21.1 - (20 + 1));
+									end
+								end);
+								break;
+							end
+							if (v493 == (0 + 0)) then
+								v4.st.RebI = false;
+								if v89 then
+									pcall(function()
+										v89:Set(false);
+									end);
+								end
+								v493 = 320 - (134 + 185);
+							end
+						end
+					end
+					break;
+				end
+			end
+			break;
+		end
+	end
+end);
+v89 = v86:AddSwitch("Auto Rebirth (Infinite)", function(v186)
+	local v187 = 0;
+	while true do
+		if (v187 == (1133 - (549 + 584))) then
+			v4.st.RebI = v186;
+			if v186 then
+				local v373 = 685 - (314 + 371);
+				local v374;
+				while true do
+					if (v373 == (0 - 0)) then
+						v374 = 968 - (478 + 490);
+						while true do
+							if (v374 == (1 + 0)) then
+								task.spawn(function()
+									while v4.st.RebI do
+										local v617 = 1172 - (786 + 386);
+										local v618;
+										while true do
+											if (v617 == 0) then
+												v618 = 0;
+												while true do
+													if (v618 == (0 - 0)) then
+														v7(v10("rebirthRemote"), "rebirthRequest");
+														task.wait(1379.1 - (1055 + 324));
+														break;
+													end
+												end
+												break;
+											end
+										end
+									end
+								end);
+								break;
+							end
+							if (v374 == (1340 - (1093 + 247))) then
+								v4.st.RebT = false;
+								if v88 then
+									pcall(function()
+										v88:Set(false);
+									end);
+								end
+								v374 = 1 + 0;
+							end
+						end
+						break;
+					end
+				end
+			end
+			break;
+		end
+	end
+end);
+v86:AddSwitch("Auto Size 1", function(v188)
+	v4.st.Sz = v188;
+	if v188 then
+		task.spawn(function()
+			while v4.st.Sz do
+				v7(v10("changeSpeedSizeRemote"), "changeSize", 1 + 0);
+				task.wait(0.2 - 0);
+			end
+		end);
+	end
+end);
+v86:AddSwitch("Auto TP Muscle King", function(v190)
+	v4.st.TPMK = v190;
+	if v190 then
+		task.spawn(function()
+			while v4.st.TPMK do
+				pcall(function()
+					local v375 = 0;
+					local v376;
+					while true do
+						if (v375 == 0) then
+							v376 = v11();
+							if v376 then
+								v376:MoveTo(Vector3.new(-(29342 - 20696), 48 - 31, -5738));
+							end
+							break;
+						end
+					end
+				end);
+				task.wait(4 - 2);
+			end
+		end);
+	end
+end);
+v86:AddSwitch("Auto Fortune Wheel", function(v192)
+	v4.st.FW = v192;
+	if v192 then
+		task.spawn(function()
+			while v4.st.FW do
+				pcall(function()
+					local v377 = 0;
+					local v378;
+					local v379;
+					local v380;
+					while true do
+						if (v377 == (1 + 0)) then
+							v380 = v379 and v379:FindFirstChild("Fortune Wheel");
+							if (v378 and v380) then
+								v7(v378, "openFortuneWheel", v380);
+							end
+							break;
+						end
+						if (v377 == (0 - 0)) then
+							v378 = v10("openFortuneWheelRemote");
+							v379 = v1:FindFirstChild("fortuneWheelChances");
+							v377 = 3 - 2;
+						end
+					end
+				end);
+				task.wait(0.3);
+			end
+		end);
+	end
+end);
+local v90 = v15:AddTab("Kill");
+local v91 = {};
+local v92 = "";
+v90:AddSwitch("Auto Good Karma", function(v194)
+	local v195 = 0;
+	local v196;
+	while true do
+		if (v195 == (0 + 0)) then
+			v196 = 0 - 0;
+			while true do
+				if ((688 - (364 + 324)) == v196) then
+					v4.st.GK = v194;
+					task.spawn(function()
+						while v4.st.GK do
+							pcall(function()
+								local v524 = 0 - 0;
+								local v525;
+								local v526;
+								local v527;
+								while true do
+									if ((4 - 2) == v524) then
+										if (not v526 or not v527) then
+											return;
+										end
+										for v619, v620 in ipairs(v0:GetPlayers()) do
+											if (v620 ~= v3) then
+												local v643 = 0 + 0;
+												local v644;
+												local v645;
+												while true do
+													if ((4 - 3) == v643) then
+														if (v644 and v645 and (v644.Value > v645.Value)) then
+															local v681 = v620.Character and v620.Character:FindFirstChild("HumanoidRootPart");
+															if v681 then
+																v8(v526, v681, 1);
+																v8(v527, v681, 1 - 0);
+																v8(v526, v681, 0);
+																v8(v527, v681, 0);
+															end
+														end
+														break;
+													end
+													if ((0 - 0) == v643) then
+														v644 = v620:FindFirstChild("evilKarma");
+														v645 = v620:FindFirstChild("goodKarma");
+														v643 = 1269 - (1249 + 19);
+													end
+												end
+											end
+										end
+										break;
+									end
+									if (v524 == (1 + 0)) then
+										v526 = v525:FindFirstChild("RightHand");
+										v527 = v525:FindFirstChild("LeftHand");
+										v524 = 7 - 5;
+									end
+									if (v524 == (1086 - (686 + 400))) then
+										v525 = v11();
+										if not v525 then
+											return;
+										end
+										v524 = 1;
+									end
+								end
+							end);
+							task.wait(0.05 + 0);
+						end
+					end);
+					break;
+				end
+			end
+			break;
+		end
+	end
+end);
+v90:AddSwitch("Auto Bad Karma", function(v197)
+	v4.st.BK = v197;
+	task.spawn(function()
+		while v4.st.BK do
+			local v284 = 0;
+			while true do
+				if (v284 == (229 - (73 + 156))) then
+					pcall(function()
+						local v403 = v11();
+						if not v403 then
+							return;
+						end
+						local v404 = v403:FindFirstChild("RightHand");
+						local v405 = v403:FindFirstChild("LeftHand");
+						if (not v404 or not v405) then
+							return;
+						end
+						for v471, v472 in ipairs(v0:GetPlayers()) do
+							if (v472 ~= v3) then
+								local v528 = 0;
+								local v529;
+								local v530;
+								while true do
+									if ((0 + 0) == v528) then
+										v529 = v472:FindFirstChild("evilKarma");
+										v530 = v472:FindFirstChild("goodKarma");
+										v528 = 812 - (721 + 90);
+									end
+									if (v528 == (1 + 0)) then
+										if (v529 and v530 and (v530.Value > v529.Value)) then
+											local v637 = v472.Character and v472.Character:FindFirstChild("HumanoidRootPart");
+											if v637 then
+												local v650 = 0;
+												local v651;
+												while true do
+													if (v650 == (0 - 0)) then
+														v651 = 0;
+														while true do
+															if (v651 == (471 - (224 + 246))) then
+																v8(v404, v637, 0 - 0);
+																v8(v405, v637, 0 - 0);
+																break;
+															end
+															if (v651 == (0 + 0)) then
+																v8(v404, v637, 1 + 0);
+																v8(v405, v637, 1 + 0);
+																v651 = 1 - 0;
+															end
+														end
+														break;
+													end
+												end
+											end
+										end
+										break;
+									end
+								end
+							end
+						end
+					end);
+					task.wait(0.05 - 0);
+					break;
+				end
+			end
+		end
+	end);
+end);
+v90:AddSwitch("Whitelist Friends", function(v199)
+	if v199 then
+		for v306, v307 in ipairs(v0:GetPlayers()) do
+			pcall(function()
+				if ((v307 ~= v3) and v3:IsFriendsWith(v307.UserId)) then
+					v91[v307.Name] = true;
+				end
+			end);
+		end
+	end
+end);
+v90:AddTextBox("Whitelist Player", function(v200)
+	if (v200 and (v200 ~= "")) then
+		v91[v200] = true;
+	end
+end);
+v90:AddTextBox("UnWhitelist Player", function(v201)
+	if (v201 and (v201 ~= "")) then
+		v91[v201] = nil;
+	end
+end);
+v90:AddSwitch("Auto Kill All", function(v202)
+	local v203 = 0;
+	while true do
+		if (0 == v203) then
+			v4.st.KA = v202;
+			task.spawn(function()
+				while v4.st.KA do
+					pcall(function()
+						local v407 = 0;
+						local v408;
+						local v409;
+						local v410;
+						local v411;
+						while true do
+							if (v407 == (515 - (203 + 310))) then
+								v411 = v3.Backpack:FindFirstChild("Punch");
+								if (v411 and not v408:FindFirstChild("Punch")) then
+									v411.Parent = v408;
+								end
+								v407 = 1996 - (1238 + 755);
+							end
+							if (v407 == (1 + 0)) then
+								v409 = v408:FindFirstChild("RightHand");
+								v410 = v408:FindFirstChild("LeftHand");
+								v407 = 1536 - (709 + 825);
+							end
+							if ((0 - 0) == v407) then
+								local v531 = 0 - 0;
+								while true do
+									if (v531 == (865 - (196 + 668))) then
+										v407 = 1;
+										break;
+									end
+									if (v531 == (0 - 0)) then
+										v408 = v11();
+										if not v408 then
+											return;
+										end
+										v531 = 1 - 0;
+									end
+								end
+							end
+							if (v407 == (836 - (171 + 662))) then
+								if (not v409 or not v410) then
+									return;
+								end
+								for v565, v566 in ipairs(v0:GetPlayers()) do
+									if ((v566 ~= v3) and not v91[v566.Name]) then
+										local v603 = 0;
+										local v604;
+										while true do
+											if (v603 == (93 - (4 + 89))) then
+												v604 = v566.Character and v566.Character:FindFirstChild("HumanoidRootPart");
+												if v604 then
+													local v665 = 0;
+													while true do
+														if ((3 - 2) == v665) then
+															v8(v409, v604, 0 + 0);
+															v8(v410, v604, 0 - 0);
+															break;
+														end
+														if (v665 == (0 + 0)) then
+															v8(v409, v604, 1);
+															v8(v410, v604, 1487 - (35 + 1451));
+															v665 = 1454 - (28 + 1425);
+														end
+													end
+												end
+												break;
+											end
+										end
+									end
+								end
+								break;
+							end
+						end
+					end);
+					task.wait(0.05);
+				end
+			end);
+			break;
+		end
+	end
+end);
+v90:AddTextBox("Kill Target (Username)", function(v204)
+	v92 = v204 or "";
+end);
+v90:AddSwitch("Start Kill Target", function(v205)
+	v4.st.KT = v205;
+	task.spawn(function()
+		while v4.st.KT do
+			local v287 = 1993 - (941 + 1052);
+			while true do
+				if ((0 + 0) == v287) then
+					pcall(function()
+						local v412 = 1514 - (822 + 692);
+						local v413;
+						local v414;
+						local v415;
+						local v416;
+						local v417;
+						while true do
+							if (2 == v412) then
+								if (v414 and not v413:FindFirstChild("Punch")) then
+									v414.Parent = v413;
+								end
+								v415 = v413:FindFirstChild("RightHand");
+								v412 = 3;
+							end
+							if (v412 == (3 - 0)) then
+								v416 = v413:FindFirstChild("LeftHand");
+								if (not v415 or not v416) then
+									return;
+								end
+								v412 = 4;
+							end
+							if (v412 == (2 + 2)) then
+								v417 = v0:FindFirstChild(v92);
+								if (v417 and (v417 ~= v3)) then
+									local v586 = 0;
+									local v587;
+									while true do
+										if (v586 == (297 - (45 + 252))) then
+											v587 = v417.Character and v417.Character:FindFirstChild("HumanoidRootPart");
+											if v587 then
+												local v652 = 0 + 0;
+												while true do
+													if (v652 == (1 + 0)) then
+														v8(v415, v587, 0);
+														v8(v416, v587, 0 - 0);
+														break;
+													end
+													if (v652 == 0) then
+														v8(v415, v587, 434 - (114 + 319));
+														v8(v416, v587, 1);
+														v652 = 1 - 0;
+													end
+												end
+											end
+											break;
+										end
+									end
+								end
+								break;
+							end
+							if (v412 == 0) then
+								if (v92 == "") then
+									return;
+								end
+								v413 = v11();
+								v412 = 1 - 0;
+							end
+							if (v412 == (1 + 0)) then
+								if not v413 then
+									return;
+								end
+								v414 = v3.Backpack:FindFirstChild("Punch");
+								v412 = 2;
+							end
+						end
+					end);
+					task.wait(0.05 - 0);
+					break;
+				end
+			end
+		end
+	end);
+end);
+v90:AddSwitch("Fast Punch (Kill)", function(v207)
+	local v208 = 0 - 0;
+	while true do
+		if (0 == v208) then
+			v4.st.KFP = v207;
+			if v207 then
+				task.spawn(function()
+					while v4.st.KFP do
+						local v473 = 0;
+						while true do
+							if (v473 == 0) then
+								pcall(function()
+									local v588 = 1963 - (556 + 1407);
+									local v589;
+									local v590;
+									while true do
+										if (v588 == (1207 - (741 + 465))) then
+											v590 = v3.Backpack:FindFirstChild("Punch");
+											if v590 then
+												local v653 = 465 - (170 + 295);
+												local v654;
+												while true do
+													if (v653 == 0) then
+														v590.Parent = v589;
+														v654 = v590:FindFirstChild("attackTime");
+														v653 = 1 + 0;
+													end
+													if (v653 == (1 + 0)) then
+														if v654 then
+															v654.Value = 0;
+														end
+														break;
+													end
+												end
+											end
+											break;
+										end
+										if (v588 == 0) then
+											v589 = v11();
+											if not v589 then
+												return;
+											end
+											v588 = 2 - 1;
+										end
+									end
+								end);
+								task.wait(0.1 + 0);
+								break;
+							end
+						end
+					end
+				end);
+				task.spawn(function()
+					while v4.st.KFP do
+						local v474 = 0 + 0;
+						while true do
+							if ((0 + 0) == v474) then
+								pcall(function()
+									local v591 = 0;
+									local v592;
+									local v593;
+									while true do
+										if (v591 == (1230 - (957 + 273))) then
+											v592 = v11();
+											if not v592 then
+												return;
+											end
+											v591 = 1 + 0;
+										end
+										if (v591 == (1 + 0)) then
+											v593 = v592:FindFirstChild("Punch");
+											if v593 then
+												v593:Activate();
+											end
+											break;
+										end
+									end
+								end);
+								task.wait(0.05 - 0);
+								break;
+							end
+						end
+					end
+				end);
+			else
+				pcall(function()
+					local v418 = 0;
+					local v419;
+					while true do
+						if (v418 == (0 - 0)) then
+							v419 = v11();
+							if v419 then
+								local v594 = 0;
+								local v595;
+								while true do
+									if (v594 == 0) then
+										v595 = v419:FindFirstChild("Punch");
+										if v595 then
+											v595.Parent = v3.Backpack;
+										end
+										break;
+									end
+								end
+							end
+							break;
+						end
+					end
+				end);
+			end
+			break;
+		end
+	end
+end);
+local v93 = v15:AddTab("Pets");
+local v94 = {"Swift Samurai","Tribal Overlord","Neon Guardian","Blue Birdie","Blue Bunny","Blue Firecaster","Blue Pheonix","Crimson Falcon","Cybernetic Showdown Dragon","Dark Golem","Dark Legends Manticore","Dark Vampy","Darkstar Hunter","Eternal Strike Leviathan","Frostwave Legends Penguin","Gold Warrior","Golden Pheonix","Golden Viking","Green Butterfly","Green Firecaster","Infernal Dragon","Lightning Strike Phantom","Magic Butterfly","Muscle Sensei","Orange Hedgehog","Orange Pegasus","Phantom Genesis Dragon","Purple Dragon","Purple Falcon","Red Dragon","Red Firecaster","Red Kitty","Silver Dog","Ultimate Supernova Pegasus","Ultra Birdie","White Pegasus","White Pheonix","Yellow Butterfly"};
+local v95 = {"Astral Electro","Azure Tundra","Blue Aura","Dark Electro","Dark Lightning","Dark Storm","Electro","Enchanted Mirage","Entropic Blast","Eternal Megastrike","Grand Supernova","Green Aura","Inferno","Lightning","Muscle King","Power Lightning","Purple Aura","Purple Nova","Red Aura","Supernova","Ultra Inferno","Ultra Mirage","Unstable Mirage","Yellow Aura"};
+local v96 = v94[1945 - (1129 + 815)];
+local v97 = v95[1];
+v93:AddLabel("Pet: type name in box below");
+v93:AddTextBox("Pet Name", function(v209)
+	if (v209 and (v209 ~= "")) then
+		v96 = v209;
+	end
+end);
+v93:AddSwitch("Auto Open Pet", function(v210)
+	local v211 = 387 - (371 + 16);
+	while true do
+		if (v211 == (1750 - (1326 + 424))) then
+			v4.st.APet = v210;
+			if v210 then
+				task.spawn(function()
+					while v4.st.APet do
+						local v475 = 0;
+						local v476;
+						while true do
+							if (v475 == 0) then
+								v476 = 0 - 0;
+								while true do
+									if (v476 == 0) then
+										pcall(function()
+											local v638 = 0 - 0;
+											local v639;
+											local v640;
+											while true do
+												if (v638 == 1) then
+													if (v639 and v640) then
+														local v673 = 0;
+														local v674;
+														while true do
+															if (v673 == (118 - (88 + 30))) then
+																v674 = v639:FindFirstChild(v96);
+																if v674 then
+																	v7(v640, v674);
+																end
+																break;
+															end
+														end
+													end
+													break;
+												end
+												if (v638 == (771 - (720 + 51))) then
+													local v666 = 0 - 0;
+													while true do
+														if (v666 == (1776 - (421 + 1355))) then
+															v639 = v1:FindFirstChild("cPetShopFolder");
+															v640 = v1:FindFirstChild("cPetShopRemote");
+															v666 = 1;
+														end
+														if (v666 == (1 - 0)) then
+															v638 = 1 + 0;
+															break;
+														end
+													end
+												end
+											end
+										end);
+										task.wait(1083.2 - (286 + 797));
+										break;
+									end
+								end
+								break;
+							end
+						end
+					end
+				end);
+			end
+			break;
+		end
+	end
+end);
+v93:AddLabel("Aura: type name in box below");
+v93:AddTextBox("Aura Name", function(v212)
+	if (v212 and (v212 ~= "")) then
+		v97 = v212;
+	end
+end);
+v93:AddSwitch("Auto Open Aura", function(v213)
+	v4.st.AAura = v213;
+	if v213 then
+		task.spawn(function()
+			while v4.st.AAura do
+				local v333 = 0 - 0;
+				while true do
+					if (v333 == (0 - 0)) then
+						pcall(function()
+							local v494 = v1:FindFirstChild("cPetShopFolder");
+							local v495 = v1:FindFirstChild("cPetShopRemote");
+							if (v494 and v495) then
+								local v567 = v494:FindFirstChild(v97);
+								if v567 then
+									v7(v495, v567);
+								end
+							end
+						end);
+						task.wait(439.2 - (397 + 42));
+						break;
+					end
+				end
+			end
+		end);
+	end
+end);
+v93:AddLabel("--- Pet List ---");
+for v215 = 1 + 0, #v94, 3 do
+	local v216 = 800 - (24 + 776);
+	local v217;
+	local v218;
+	local v219;
+	while true do
+		if (v216 == (0 - 0)) then
+			v217 = 785 - (222 + 563);
+			v218 = nil;
+			v216 = 1 - 0;
+		end
+		if (v216 == (1 + 0)) then
+			v219 = nil;
+			while true do
+				if (v217 == 1) then
+					if v94[v215 + (192 - (23 + 167))] then
+						v218 = v218 .. " | " .. v94[v215 + 2];
+					end
+					v219 = v93:AddLabel(v218);
+					v217 = 1800 - (690 + 1108);
+				end
+				if (v217 == (1 + 1)) then
+					v219.TextSize = 10 + 2;
+					break;
+				end
+				if (v217 == 0) then
+					v218 = v94[v215];
+					if v94[v215 + 1] then
+						v218 = v218 .. " | " .. v94[v215 + (849 - (40 + 808))];
+					end
+					v217 = 1 + 0;
+				end
+			end
+			break;
+		end
+	end
+end
+local v98 = v15:AddTab("Spy Stats");
+local v99 = "";
+v98:AddTextBox("Player Username", function(v220)
+	v99 = v220 or "";
+end);
+local v100 = {str=v98:AddLabel("Strength: -"),reb=v98:AddLabel("Rebirths: -"),kl=v98:AddLabel("Kills: -"),dur=v98:AddLabel("Durability: -"),gems=v98:AddLabel("Gems: -"),evil=v98:AddLabel("Evil Karma: -"),good=v98:AddLabel("Good Karma: -"),map=v98:AddLabel("Map: -")};
+for v221, v222 in pairs(v100) do
+	v222.TextSize = 57 - 42;
+end
+task.spawn(function()
+	while task.wait(1 + 0) do
+		if (v99 ~= "") then
+			pcall(function()
+				local v334 = 0 + 0;
+				local v335;
+				local v336;
+				local v337;
+				local v338;
+				local v339;
+				local v340;
+				local v341;
+				while true do
+					if (v334 == (2 + 1)) then
+						if v340 then
+							v100.good.Text = "Good Karma: " .. v13(v340.Value);
+						end
+						if v341 then
+							v100.map.Text = "Map: " .. tostring(v341.Value);
+						end
+						break;
+					end
+					if (v334 == (571 - (47 + 524))) then
+						local v477 = 0 + 0;
+						while true do
+							if (v477 == (2 - 1)) then
+								v336 = v335:FindFirstChild("leaderstats");
+								if v336 then
+									local v605 = 0 - 0;
+									local v606;
+									local v607;
+									local v608;
+									while true do
+										if (v605 == (2 - 1)) then
+											v608 = v336:FindFirstChild("Kills");
+											if v606 then
+												v100.str.Text = "Strength: " .. v13(v606.Value);
+											end
+											v605 = 2;
+										end
+										if (v605 == 2) then
+											if v607 then
+												v100.reb.Text = "Rebirths: " .. v13(v607.Value);
+											end
+											if v608 then
+												v100.kl.Text = "Kills: " .. v13(v608.Value);
+											end
+											break;
+										end
+										if (v605 == 0) then
+											v606 = v336:FindFirstChild("Strength");
+											v607 = v336:FindFirstChild("Rebirths");
+											v605 = 1;
+										end
+									end
+								end
+								v477 = 2;
+							end
+							if (v477 == (1726 - (1165 + 561))) then
+								v335 = v0:FindFirstChild(v99);
+								if not v335 then
+									return;
+								end
+								v477 = 1;
+							end
+							if (v477 == (1 + 1)) then
+								v334 = 1;
+								break;
+							end
+						end
+					end
+					if (v334 == 1) then
+						v337 = v335:FindFirstChild("Durability");
+						v338 = v335:FindFirstChild("Gems");
+						v339 = v335:FindFirstChild("evilKarma");
+						v340 = v335:FindFirstChild("goodKarma");
+						v334 = 6 - 4;
+					end
+					if (v334 == (1 + 1)) then
+						v341 = v335:FindFirstChild("currentMap");
+						if v337 then
+							v100.dur.Text = "Durability: " .. v13(v337.Value);
+						end
+						if v338 then
+							v100.gems.Text = "Gems: " .. v13(v338.Value);
+						end
+						if v339 then
+							v100.evil.Text = "Evil Karma: " .. v13(v339.Value);
+						end
+						v334 = 482 - (341 + 138);
+					end
+				end
+			end);
+		end
+	end
+end);
+local v101 = v15:AddTab("Teleport");
+local v102 = {{"Spawn",Vector3.new(2, 8, 369 - 254)},{"Secret Area",Vector3.new(1947, 2, 14704 - 8513)},{"Tiny Island",Vector3.new(-(1269 - (1030 + 205)), 7 + 0, 1903)},{"Frozen Island",Vector3.new(-2600, 290 - (156 + 130), -(917 - 513))},{"Mythical Island",Vector3.new(595 + 1660, 7, 625 + 446)},{"Hell Island",Vector3.new(-6768, 7, -(2450 - (671 + 492)))},{"Legend Island",Vector3.new(3930 + 674, 2936 - (1036 + 909), -3887)},{"Muscle King Island",Vector3.new(-(8849 - (11 + 192)), 9 + 8, -5738)},{"Jungle Island",Vector3.new(-(19075 - 10416), 8 - 2, 2560 - (50 + 126))},{"Brawl Lava",Vector3.new(5884 - (1233 + 180), 119, -(9805 - (522 + 447)))},{"Brawl Desert",Vector3.new(960, 51 - 34, -(3143 + 4255))},{"Brawl Regular",Vector3.new(-(7315 - 5466), 1930 - (716 + 1194), -6335)}};
+for v224, v225 in ipairs(v102) do
+	local v226 = 0 + 0;
+	local v227;
+	local v228;
+	local v229;
+	while true do
+		if (v226 == (1 + 0)) then
+			v229 = nil;
+			while true do
+				if (v227 == 0) then
+					v228, v229 = v225[504 - (74 + 429)], v225[3 - 1];
+					v101:AddButton(v228, function()
+						pcall(function()
+							local v496 = 0 + 0;
+							local v497;
+							while true do
+								if (v496 == (0 - 0)) then
+									v497 = v12();
+									if v497 then
+										v497.CFrame = CFrame.new(v229);
+									end
+									break;
+								end
+							end
+						end);
+					end);
+					break;
+				end
+			end
+			break;
+		end
+		if (v226 == (0 + 0)) then
+			v227 = 0;
+			v228 = nil;
+			v226 = 2 - 1;
+		end
+	end
+end
+local v103 = v15:AddTab("Misc");
+local v104 = game:GetService("VirtualUser");
+v3.Idled:Connect(function()
+	local v230 = 0 - 0;
+	local v231;
+	while true do
+		if (v230 == 0) then
+			v231 = 433 - (279 + 154);
+			while true do
+				if (v231 == (779 - (454 + 324))) then
+					v104:Button2Up(Vector2.new(0 + 0, 17 - (12 + 5)), workspace.CurrentCamera.CFrame);
+					break;
+				end
+				if (v231 == 0) then
+					v104:Button2Down(Vector2.new(0 + 0, 0 - 0), workspace.CurrentCamera.CFrame);
+					task.wait(1 + 0);
+					v231 = 1;
+				end
+			end
+			break;
+		end
+	end
+end);
+v103:AddLabel("[ Anti AFK: Always Active ]");
+v103:AddSwitch("Anti Knockback", function(v232)
+	pcall(function()
+		local v264 = 1093 - (277 + 816);
+		local v265;
+		local v266;
+		local v267;
+		while true do
+			if ((0 - 0) == v264) then
+				v265 = 1183 - (1058 + 125);
+				v266 = nil;
+				v264 = 1 + 0;
+			end
+			if (v264 == (976 - (815 + 160))) then
+				v267 = nil;
+				while true do
+					if (v265 == (0 - 0)) then
+						v266 = v11();
+						if not v266 then
+							return;
+						end
+						v265 = 2 - 1;
+					end
+					if (v265 == (1 + 1)) then
+						if v232 then
+							local v537 = 0 - 0;
+							local v538;
+							while true do
+								if (v537 == (1900 - (41 + 1857))) then
+									v538.Parent = v267;
+									break;
+								end
+								if (v537 == (1894 - (1222 + 671))) then
+									v538.Velocity = Vector3.new(0 - 0, 0, 0 - 0);
+									v538.P = 2432 - (229 + 953);
+									v537 = 1776 - (1111 + 663);
+								end
+								if (v537 == (1579 - (874 + 705))) then
+									v538 = Instance.new("BodyVelocity");
+									v538.MaxForce = Vector3.new(13998 + 86002, 0 + 0, 100000);
+									v537 = 1;
+								end
+							end
+						else
+							local v539 = 0;
+							local v540;
+							while true do
+								if (v539 == (0 - 0)) then
+									v540 = v267:FindFirstChildOfClass("BodyVelocity");
+									if v540 then
+										v540:Destroy();
+									end
+									break;
+								end
+							end
+						end
+						break;
+					end
+					if (1 == v265) then
+						v267 = v266:FindFirstChild("HumanoidRootPart");
+						if not v267 then
+							return;
+						end
+						v265 = 1 + 1;
+					end
+				end
+				break;
+			end
+		end
+	end);
+end);
+v103:AddSwitch("Lock Position", function(v233)
+	if v233 then
+		pcall(function()
+			local v311 = 679 - (642 + 37);
+			local v312;
+			local v313;
+			while true do
+				if (v311 == 1) then
+					v313 = v312.CFrame;
+					v4.st.PLC = v2.Heartbeat:Connect(function()
+						pcall(function()
+							local v498 = 0 + 0;
+							local v499;
+							while true do
+								if (v498 == (0 + 0)) then
+									v499 = v12();
+									if v499 then
+										v499.CFrame = v313;
+									end
+									break;
+								end
+							end
+						end);
+					end);
+					break;
+				end
+				if (v311 == (0 - 0)) then
+					v312 = v12();
+					if not v312 then
+						return;
+					end
+					v311 = 1;
+				end
+			end
+		end);
+	elseif v4.st.PLC then
+		local v342 = 454 - (233 + 221);
+		local v343;
+		while true do
+			if ((0 - 0) == v342) then
+				v343 = 0 + 0;
+				while true do
+					if (v343 == (1541 - (718 + 823))) then
+						v4.st.PLC:Disconnect();
+						v4.st.PLC = nil;
+						break;
+					end
+				end
+				break;
+			end
+		end
+	end
+end);
+v103:AddSwitch("God Mode (Brawl)", function(v234)
+	local v235 = 0 + 0;
+	local v236;
+	while true do
+		if (v235 == (805 - (266 + 539))) then
+			v236 = 0 - 0;
+			while true do
+				if (v236 == (1225 - (636 + 589))) then
+					v4.st.GM = v234;
+					if v234 then
+						task.spawn(function()
+							while v4.st.GM do
+								local v569 = 0;
+								while true do
+									if (v569 == (0 - 0)) then
+										v6(v10("brawlEvent"), "joinBrawl");
+										task.wait(0.2 - 0);
+										break;
+									end
+								end
+							end
+						end);
+					end
+					break;
+				end
+			end
+			break;
+		end
+	end
+end);
+v103:AddSwitch("Walk on Water", function(v237)
+	if v237 then
+		v4.st.WP = {};
+		for v314 = -(5 + 1), 6 do
+			for v344 = -6, 6 do
+				pcall(function()
+					local v381 = 0 + 0;
+					local v382;
+					while true do
+						if (v381 == (1015 - (657 + 358))) then
+							v382 = Instance.new("Part");
+							v382.Size = Vector3.new(4096, 2 - 1, 9331 - 5235);
+							v381 = 1;
+						end
+						if (v381 == (1190 - (1151 + 36))) then
+							v382.Parent = workspace;
+							table.insert(v4.st.WP, v382);
+							break;
+						end
+						if (v381 == (1 + 0)) then
+							v382.Position = Vector3.new(v314 * (1077 + 3019), -(26.5 - 17), v344 * (5928 - (1552 + 280)));
+							v382.Anchored = true;
+							v381 = 836 - (64 + 770);
+						end
+						if (v381 == (2 + 0)) then
+							v382.Transparency = 2 - 1;
+							v382.CanCollide = true;
+							v381 = 1 + 2;
+						end
+					end
+				end);
+			end
+		end
+	elseif v4.st.WP then
+		local v345 = 1243 - (157 + 1086);
+		while true do
+			if (v345 == (0 - 0)) then
+				for v506, v507 in ipairs(v4.st.WP) do
+					pcall(function()
+						if (v507 and v507.Parent) then
+							v507:Destroy();
+						end
+					end);
+				end
+				v4.st.WP = {};
+				break;
+			end
+		end
+	end
+end);
+v103:AddButton("Remove Portals", function()
+	for v268, v269 in pairs(game:GetDescendants()) do
+		pcall(function()
+			if (v269.Name == "RobloxForwardPortals") then
+				v269:Destroy();
+			end
+		end);
+	end
+	if v4.st.PC then
+		v4.st.PC:Disconnect();
+	end
+	v4.st.PC = game.DescendantAdded:Connect(function(v270)
+		pcall(function()
+			if (v270.Name == "RobloxForwardPortals") then
+				v270:Destroy();
+			end
+		end);
+	end);
+end);
+v103:AddButton("Day", function()
+	game:GetService("Lighting").ClockTime = 12;
+end);
+v103:AddButton("Night", function()
+	game:GetService("Lighting").ClockTime = 0 - 0;
+end);
+v103:AddButton("Midnight", function()
+	game:GetService("Lighting").ClockTime = 8 - 2;
+end);
+local v105 = v15:AddTab("Credits");
+v105:AddLabel("VeloxScript | Muscle Legends");
+v105:AddLabel("t.me/VeloxScript");
+v105:AddLabel("Delta | Wave | Fluxus | Codex");
+v105:AddLabel("PC & Mobile Compatible");
